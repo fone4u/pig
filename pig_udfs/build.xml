@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!-- 一个项目,可包含很多任务组(target) -->
+<project default="jar" basedir=".">
+	<!-- 项目中的一个任务组,可包含很多任务(task:javac,java...) -->
+	
+	<path id="classpath">
+		<pathelement location="."/>
+		<pathelement location="build/classes"/>
+		<pathelement path="D:\\eclipse\\pig_udfs\\lib\\pig-0.10.1.jar"/>	
+	</path>
+	
+	<target name="init">
+		<delete dir="build"/>
+		<mkdir dir="build/classes"/>
+		<mkdir dir="build/lib"/>
+	</target>
+	
+	<target name="build" depends="init">
+		<!--编译-->
+		<javac srcdir="src\com\coldelast\" destdir="build\classes">
+			<classpath refid="classpath"/>
+		</javac>  
+		<javac srcdir="src\com\ttpod\stat\" destdir="build\classes">
+			<classpath refid="classpath"/>
+		</javac> 
+	</target>
+	
+	<target name="jar" depends="build">
+		<jar jarfile="build\lib\pig-udf-ttpod-stat.jar" basedir="build\classes"></jar>
+	</target>
+	
+</project>
