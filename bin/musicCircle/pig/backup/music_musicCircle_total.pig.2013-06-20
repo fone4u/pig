@@ -1,0 +1,15 @@
+register /usr/lib/pig/piggybank.jar;
+register /usr/lib/pig/pig-udf-ttpod-stat.jar;
+register /usr/lib/pig/mysql-connector-java-5.1.17.jar;
+define getUrlHost com.ttpod.stat.exec.url.GetUrlHost();
+define getQueryItem com.ttpod.stat.exec.url.GetItemFromQueryString();
+LOG = load '$dir' using PigStorage('`') as (ip:chararray,data:map[],param:map[]); --¼ÓÔØÊý¾Ý
+LOG1 = filter LOG by data is not null;
+GETKEY = foreach LOG1 generate ip,data#'module' as module,data#'type' as type,data#'origin' as origin,param#'uid' as uid,data#'optvalue' as optvalue,data#'value' as value;
+MUSICCIRCLE_user_info = filter GETKEY by module=='musicCircle';
+MUSICCIRCLE_user_info_group = group MUSICCIRCLE_user_info by (type,origin);
+MUSICCIRCLE_user_info_count = foreach MUSICCIRCLE_user_info_group{
+    uv = distinct MUSICCIRCLE_user_info.uid;
+    generate flatten(group),SUM(MUSICCIRCLE_user_info.value),COUNT(uv),'$day',0;
+};
+STORE MUSICCIRCLE_user_info_count INTO 'music_musciCircle_total' USING  org.apache.pig.piggybank.storage.DBStorage('com.mysql.jdbc.Driver','jdbc:mysql://10.0.2.100:3306/pig','user','stat^2012','insert into music_musciCircle_total(type,origin,pv,uv,stat_date,hour) values(?,?,?,?,?,?)');

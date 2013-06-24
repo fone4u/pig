@@ -1,0 +1,100 @@
+----------------------------------------------------------------
+2013-06-06 06:16:36.769 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance a816c00e-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:16:37.157 GMT:
+Shutting down instance a816c00e-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:25:28.424 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 08264012-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:25:28.835 GMT:
+Shutting down instance 08264012-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:26:12.275 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance e03f4017-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:26:12.306 GMT:
+Shutting down instance e03f4017-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:30:04.056 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 2057c01b-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:30:04.268 GMT:
+Shutting down instance 2057c01b-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:30:40.454 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 787c0020-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:30:40.482 GMT:
+Shutting down instance 787c0020-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:34:50.202 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance d89d8024-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:34:50.400 GMT:
+Shutting down instance d89d8024-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:35:27.846 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 00cd0029-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:35:27.870 GMT:
+Shutting down instance 00cd0029-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:42:14.017 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance c0f7802d-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:42:14.262 GMT:
+Shutting down instance c0f7802d-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:42:58.188 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 09324032-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:42:58.207 GMT:
+Shutting down instance 09324032-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
+----------------------------------------------------------------
+2013-06-06 06:43:55.108 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 6965c036-013f-1821-333b-00000b1aabb8
+on database directory /home/hdfs/bin/ttpod_imei/allimei/TempStatsStore  
+
+Database Class Loader started - derby.database.classpath=''
+
+2013-06-06 06:43:55.323 GMT:
+Shutting down instance 6965c036-013f-1821-333b-00000b1aabb8
+----------------------------------------------------------------
