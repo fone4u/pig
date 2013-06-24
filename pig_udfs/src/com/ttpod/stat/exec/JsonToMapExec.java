@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
 import org.apache.pig.EvalFunc;
+import org.apache.pig.PigWarning;
+import org.apache.pig.builtin.LOG;
 import org.apache.pig.data.DataBag;
 import org.apache.pig.data.DefaultBagFactory;
 import org.apache.pig.data.Tuple;
@@ -24,7 +27,7 @@ public class JsonToMapExec extends EvalFunc<Map<String, Object>> {
 	private ObjectMapper mapper = new  ObjectMapper();
 
 	@Override
-	public Map<String, Object> exec(Tuple input) throws IOException {
+	public Map<String, Object> exec(Tuple input)  {
 		Map<String, Object> values = new HashMap<String, Object>();
 		try {
 			// Verify the input is valid, logging to a Hadoop counter if not.
@@ -47,7 +50,8 @@ public class JsonToMapExec extends EvalFunc<Map<String, Object>> {
 			return values;
 			// return parseStringToMap(jsonLiteral);
 		} catch (Exception e) {
-			// LOG.warn("Error in " + getClass() + " with input " + input, e);
+			
+			warn("******Error in " + getClass() + " with input " + input, PigWarning.ACCESSING_NON_EXISTENT_FIELD);
 			//System.out.println("yichang");
 			return null;	
 		}
@@ -60,7 +64,7 @@ public class JsonToMapExec extends EvalFunc<Map<String, Object>> {
 			String key = keys.next();
 			JsonNode value = nodes.next();
 
-			System.out.println(key + ":" + value.toString());
+			//System.out.println(key + ":" + value.toString());
 			if (value.isArray()) {
 				ArrayNode array = (ArrayNode) value;
 				DataBag bag = DefaultBagFactory.getInstance().newDefaultBag();
@@ -92,29 +96,37 @@ public class JsonToMapExec extends EvalFunc<Map<String, Object>> {
 			bag.add(tupleFactory.newTuple(values2));
 		} else {
 			if (value != null) {
-				bag.add(tupleFactory.newTuple(value));
+				warn("******Error in " + getClass() + " with input " + value, PigWarning.ACCESSING_NON_EXISTENT_FIELD);
+				//System.out.println("yichang");
+				//bag.add(tupleFactory.newTuple(value));
 			}
 		}
 	}
 	
-	 @Override
-	  public Schema outputSchema(Schema input) {
-	    try {
-	      return Utils.getSchemaFromString("json: [chararray]");
+	@Override
+	public Schema outputSchema(Schema input) {
+	   try {
+	      return Utils.getSchemaFromString("json: [bytearray]");
 	    } catch (ParserException e) {
 	      throw new RuntimeException(e);
 	    }
 	  }
 
+
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		String error = "{\"data\":[\"[(this Collection)]\"],\"param\":{\"uid\":\"860403002510811\",\"f\":\"f1\",\"v\":\"v5.4.0.2013051616\",\"app\":\"ttpod\",\"hid\":\"\",\"s\":\"s200\",\"rom\":\"MOTO%2FTAHITI%2FTAHITI%2FTAHITI%3A2.2.2%2FTHTTD_N_01.01.36I%2F0%3Auser%2Frelease-keys\",\"active\":1,\"mid\":\"MT620\",\"imsi\":\"460000834573761\",\"splus\":\"2.2.2%2F8\",\"tid\":0,\"net\":3}}";
+
+		String error2 = "{\"data\":[{\"optvalue2\":0,\"v\":1,\"time\":\"2013052700\",\"module\":\"song\",\"value\":1,\"origin\":\"local\",\"optvalue\":0,\"type\":\"listen_info\"},{\"optvalue2\":0,\"v\":1,\"time\":\"2013052700\",\"module\":\"song\",\"value\":1,\"origin\":\"local\",\"optvalue\":0,\"type\":\"listen_info\"}],\"param\":{\"uid\":\"864400014008442\",\"f\":\"f384\",\"v\":\"v5.4.0.2013051616\",\"app\":\"ttpod\",\"hid\":\"\",\"s\":\"s200\",\"rom\":\"lenovo%2Fa65cu%2Fa65cu%3A2.3.5%2FGRJ90%2FA65_S219_120307.20120307%3Auser%2Frelease-keys\",\"active\":1,\"mid\":\"Lenovo+A65\",\"imsi\":\"460015108310540\",\"splus\":\"2.3.5%2F10\",\"tid\":0,\"net\":3}}";
 		
-    	String line = "{\"data\":[{\"value\":1,\"origin\":\"download\",\"v\":1,\"time\":\"2013041512\",\"module\":\"sdk_ad\",\"optvalue\":8178,\"type\":\"show\"},{\"value\":1,\"origin\":\"download\",\"v\":1,\"time\":\"2013041512\",\"module\":\"sdk_ad\",\"optvalue\":7732,\"type\":\"show\"},{\"value\":1,\"origin\":\"download\",\"v\":1,\"time\":\"2013041512\",\"module\":\"sdk_ad\",\"optvalue\":8043,\"type\":\"show\"},{\"value\":1,\"origin\":\"download\",\"v\":1,\"time\":\"2013041512\",\"module\":\"sdk_ad\",\"optvalue\":7958,\"type\":\"show\"},{\"value\":1,\"origin\":\"download\",\"v\":1,\"time\":\"2013041512\",\"module\":\"sdk_ad\",\"optvalue\":8145,\"type\":\"show\"},{\"value\":1,\"origin\":\"download\",\"v\":1,\"time\":\"2013041512\",\"module\":\"sdk_ad\",\"optvalue\":7875,\"type\":\"show\"}],\"param\":{\"f\":\"f0\",\"uid\":\"359118045767495\",\"v\":\"v5.1.0.2013032716\",\"rom\":\"htc_asia_tw%2Fhtc_pyramid%2Fpyramid%3A4.0.3%2FIML74K%2F391535.152%3Auser%2Frelease-keys\",\"s\":\"s200\",\"hid\":\"6074275084061480\",\"active\":\"1\",\"splus\":\"4.0.3%2F15\",\"mid\":\"HTC+Sensation+XE+with+Beats+Audio+Z715e\",\"imsi\":\"466923101938063\",\"net\":2}";
+    	String line = "{\"f\":\"f0\",\"uid\":\"359118045767495\",\"v\":\"v5.1.0.2013032716\",\"rom\":\"htc_asia_tw%2Fhtc_pyramid%2Fpyramid%3A4.0.3%2FIML74K%2F391535.152%3Auser%2Frelease-keys\",\"s\":\"s200\",\"hid\":\"6074275084061480\",\"active\":\"1\",\"splus\":\"4.0.3%2F15\",\"mid\":\"HTC+Sensation+XE+with+Beats+Audio+Z715e\",\"imsi\":\"466923101938063\",\"net\":2}";
     	try {
-			System.out.println(new JsonToMapExec().exec(tupleFactory.newTuple(line)));
-		} catch (IOException e) {
+			System.out.println(new JsonToMapExec().exec(tupleFactory.newTuple(error)));
+			//System.out.println(new JsonToMapExec().outputSche(error));
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
